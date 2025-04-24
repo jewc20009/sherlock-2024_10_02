@@ -51,6 +51,8 @@ torrequest = "^0.1.0"
 # pandas can likely be bumped up to ^2.0.0 after fc39 EOL
 pandas = ">=1.0.0,<3.0.0"
 openpyxl = "^3.0.10"
+gunicorn = "^20.1.0"
+uvicorn = "^0.15.0"
 
 [tool.poetry.extras]
 tor = ["torrequest"]

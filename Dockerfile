@@ -5,12 +5,12 @@
     # i.e. `docker build -t sherlock/sherlock:0.15.0 -t sherlock/sherlock:latest .`
 
 FROM python:3.12-slim-bullseye as build
-WORKDIR /sherlock
+WORKDIR /app
 
 RUN pip3 install --no-cache-dir --upgrade pip
 
 FROM python:3.12-slim-bullseye
-WORKDIR /sherlock
+WORKDIR /app
 
 ARG VCS_REF= # CHANGE ME ON UPDATE
 ARG VCS_URL="https://github.com/sherlock-project/sherlock"
@@ -26,6 +26,6 @@ LABEL org.label-schema.vcs-ref=$VCS_REF \
 
 RUN pip3 install --no-cache-dir sherlock-project==$VERSION_TAG
 
-WORKDIR /sherlock
+WORKDIR /app
 
-ENTRYPOINT ["sherlock"]
+ENTRYPOINT ["python3", "-m", "sherlock_project.sherlock"]
